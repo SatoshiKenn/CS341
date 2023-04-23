@@ -1,10 +1,10 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
-app.get('/', (req,res) => {
-    res.send('Morinne Martinez')
-});
+const port = 3000;
 
-app.listen(process.env.port || 3000 , () => {
+app.use('/', require('./routes'));
+
+app.listen(process.env.port || port , () => {
     console.log('Web Server is running at port ' + (process.env.port || 3000))
 });
