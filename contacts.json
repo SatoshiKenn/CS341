@@ -1,0 +1,23 @@
+{
+    "Contact":{
+        "firstName": "Morinne",
+        "lastName": "Martinez",
+        "email": "morinne.martinez@gmail.com",
+        "favoriteArtist": "Taylor Swift",
+        "birthday": "03/03/97"
+    },
+    "Contact2":{
+        "firstName": "Benjamin",
+        "lastName": "Valdes",
+        "email": "benjamin.valdes@gmail.com",
+        "favoriteArtist": "Tobey Maguire",
+        "birthday": "10/25/97"
+    },
+    "Contact3":{
+        "firstName": "Kennette",
+        "lastName": "Guevara",
+        "email": "guevara.kennette@gmail.com",
+        "favoriteArtist": "Bruno Mars",
+        "birthday": "06/05/96"
+    }
+}
