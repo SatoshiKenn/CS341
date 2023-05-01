@@ -1,31 +1,32 @@
-const express = require('express');
-const mongoose = require('mongoose');
-require('dotenv').config();
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongodb = require("./db/connect");
+
+const port = process.env.PORT || 8080;
 const app = express();
 
-const port = 3000;
+app
+  .use(bodyParser.json())
+  .use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    next();
+  })
+  .use("/", require("./routes"));
 
-app.use('/', require('./routes'));
-
-app.listen(process.env.port || port , () => {
-    console.log('Web Server is running at port ' + (process.env.port || 3000))
+mongodb.initDb((err, mongodb) => {
+  if (err) {
+    console.log("\n");
+    console.log("*******************************");
+    console.log("    Mongo Connection Failed    ");
+    console.log("*******************************");
+    console.log("\n");
+    console.log(err);
+  } else {
+    app.listen(port);
+    console.log("\n");
+    console.log("*******************************");
+    console.log("✔ Mongo Successfully Connected!");
+    console.log("*******************************");
+    console.log("\n");
+  }
 });
-
-mongoose.connect(process.env.connection).then(() => 
-{
-          console.log("\n");
-          console.log("*******************************");
-          console.log("✔ Mongo Successfully Connected!");
-          console.log("*******************************");
-          console.log("\n");
-        },
-        err => {
-          console.log("\n");
-          console.log("*******************************");
-          console.log("    Mongo Connection Failed    ");
-          console.log("*******************************");
-          console.log("\n");
-          console.log(err);
-        }
-      
-);
