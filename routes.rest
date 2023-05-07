@@ -6,3 +6,44 @@ GET http://localhost:8080/contacts
 GET http://localhost:8080/contacts/644df681f97506115d36f46c
 ###
 
+### Create contact POST
+POST http://localhost:8080/contacts HTTP/1.1 
+content-type: application/json
+
+{
+"firstName":"Emerson", "lastName":"Guzman", "email":"emerson.mgp@letsmove.com", "favoriteArtist":"Chris Brown", "birthday":"01/02/1996"
+}
+
+### PUT contact 
+PUT http://localhost:8080/contacts/6456ec4fd79cca677cd17a8d HTTP/1.1 
+content-type: application/json
+
+{
+"firstName":"Emerson", "lastName":"Guzman", "email":"emerson.mgp@letsmove.com", "favoriteArtist":"Chris Brown", "birthday":"01/02/1996"
+} ### DELETE contact DELETE http://localhost:8080/contacts/6220b775099269ff7b31ceab HTTP/1.1
+
+// PRODUCTION Deploy 
+### Get all contacts 
+GET https://cs341.onrender.com/contacts
+
+### Get contact by id 
+GET https://cs341.onrender.com/contacts/644df681f97506115d36f46c
+
+### Create contact 
+POST https://cs341.onrender.com/contacts HTTP/1.1 
+content-type: application/json
+
+{
+"firstName":"Emerson", "lastName":"Guzman", "email":"emerson.mgp@letsmove.com", "favoriteArtist":"Chris Brown", "birthday":"01/02/1996"
+}
+
+### PUT contact 
+PUT https://cs341.onrender.com/contacts/6456ec4fd79cca677cd17a8d HTTP/1.1 
+content-type: application/json
+
+{
+"firstName":"Emerson", "lastName":"Guzman", "email":"emerson.mgp@letsmove.com", "favoriteArtist":"Michael Jackson", "birthday":"01/02/1996"
+}
+
+### DELETE contact 
+DELETE https://cs341.onrender.com/contacts/6456ec4fd79cca677cd17a8d HTTP/1.1

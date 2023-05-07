@@ -1,19 +1,17 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAll = async (req, res, next) => {
-  console.log('All successfully request');
-  const result = await mongodb.getDb().db('Lessons').collection('Contacts').find();
+const getAll = async (req, res) => {
+  const result = await mongodb.getDb().db('Lessons').collection('contacts').find();
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists);
   });
 };
 
-const getSingle = async (req, res, next) => {
-  console.log('Single successfully request');
+const getSingle = async (req, res) => {
   const userId = new ObjectId(req.params.id);
-  const result = await mongodb.getDb().db('Lessons').collection('Contacts').find({ _id: userId });
+  const result = await mongodb.getDb().db('Lessons').collection('contacts').find({ _id: userId });
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists[0]);
@@ -25,11 +23,10 @@ const createContact = async (req, res) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
-    favoriteArtist: req.body.favoriteArtist,
+    favoriteColor: req.body.favoriteColor,
     birthday: req.body.birthday
   };
-  
-  const response = await mongodb.getDb().db('Lessons').collection('Contacts').insertOne(contact);
+  const response = await mongodb.getDb().db('Lessons').collection('contacts').insertOne(contact);
   if (response.acknowledged) {
     res.status(201).json(response);
   } else {
@@ -44,14 +41,13 @@ const updateContact = async (req, res) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
-    favoriteArtist: req.body.favoriteArtist,
+    favoriteColor: req.body.favoriteColor,
     birthday: req.body.birthday
   };
-
   const response = await mongodb
     .getDb()
     .db('Lessons')
-    .collection('Contacts')
+    .collection('contacts')
     .replaceOne({ _id: userId }, contact);
   console.log(response);
   if (response.modifiedCount > 0) {
@@ -63,7 +59,7 @@ const updateContact = async (req, res) => {
 
 const deleteContact = async (req, res) => {
   const userId = new ObjectId(req.params.id);
-  const response = await mongodb.getDb().db('Lessons').collection('Contacts').remove({ _id: userId }, true);
+  const response = await mongodb.getDb().db('Lessons').collection('contacts').remove({ _id: userId }, true);
   console.log(response);
   if (response.deletedCount > 0) {
     res.status(204).send();
