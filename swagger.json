@@ -5,7 +5,7 @@
     "description": "Kennette Guevara API for CSE341",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "https://cs341.onrender.com/",
   "basePath": "/",
   "schemes": [
     "http"
