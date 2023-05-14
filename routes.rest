@@ -50,3 +50,7 @@ content-type: application/json
 
 ### DELETE contact 
 DELETE https://cs341.onrender.com/contacts/645736e758ae97bfd637fdfe HTTP/1.1
+
+### DOCUMENTATION
+
+https://cs341.onrender.com/api-docs/
